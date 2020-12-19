@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+const mongoose= require("mongoose");
 const msgSchema= mongoose.Schema({
     name: String,
     msg: String,
-    time: String
+    time: {}
 });
 
-export default mongoose.model('content', msgSchema);
+module.exports = mongoose.model('content', msgSchema);

@@ -1,10 +1,11 @@
 //* importing
-import express from "express";
-import mongoose from "mongoose"
-import Messages from "./msg.js";
-import Pusher from "pusher";
-import cors from "cors";
-import User from "./user.js";
+const express= require('express');
+const mongoose= require("mongoose");
+const Messages= require("./msg.js");
+const Pusher=   require("pusher");
+const cors= require("cors");
+const User= require("./user.js");
+
 
 
 
@@ -38,6 +39,7 @@ db.once('open',()=>{
             pusher.trigger('messages','inserted',{
                 name: msgDetail.name,
                 msg: msgDetail.msg,
+                time:msgDetail.time
 
             });
         }
@@ -141,7 +143,31 @@ app.post('/checkUser', (req, res) =>{
 
 //* api routes
 app.get('/',(req,res)=>res.status(200).send('the server is up and running'))
-
+app.use((req,res, next)=>{
+    res.setHeader('Access-Control-Allow-Origin',"http://localhost:3000");
+    res.setHeader('Access-Control-Allow-Headers',"*");
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+    
+});
 
 //* listener
-app.listen(PORT,()=>console.log(`listening on port ${PORT}`));
+//server.listen(PORT,()=>console.log(`listening on port ${PORT}`));
+
+
+//* socketio
+const server = app.listen(PORT,()=>console.log(`listening on port ${PORT}`));
+var io = require('socket.io').listen(server);
+io.on('connection', (socket) => {
+    console.log('a user connected');
+});
+
+
+
+
+
+
+
+//* get...post....put...all magic
+
+

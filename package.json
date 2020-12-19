@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,6 +15,7 @@
     "express": "^4.17.1",
     "mongoose": "^5.11.8",
     "pusher": "^4.0.2",
-    "query-string": "^6.13.7"
+    "query-string": "^6.13.7",
+    "socket.io": "^2.3.0"
   }
 }
