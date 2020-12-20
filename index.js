@@ -97,8 +97,6 @@ app.get('/send/sync',(req,res)=>{
 })
 
 
-
-
 app.post('/addUser',(req, res) =>{
     const user= req.body;
     User.find({userName:req.body.userName},(err,data)=>{
@@ -136,7 +134,7 @@ app.post('/checkUser', (req, res) =>{
         }
         else{
             console.log('you are good to go');
-            res.send('ok');
+            res.send(data);
         }
     })
 })
@@ -152,7 +150,7 @@ app.use((req,res, next)=>{
 });
 
 //* listener
-//server.listen(PORT,()=>console.log(`listening on port ${PORT}`));
+
 
 
 //* socketio
@@ -160,6 +158,7 @@ const server = app.listen(PORT,()=>console.log(`listening on port ${PORT}`));
 var io = require('socket.io').listen(server);
 io.on('connection', (socket) => {
     console.log('a user connected');
+    
 });
 
 
@@ -169,5 +168,18 @@ io.on('connection', (socket) => {
 
 
 //* get...post....put...all magic
+
+app.post('/getById/:id',(req , res)=>{
+    const id= req.params.id;
+    User.findById(id , (err , data)=>{
+        if(err){
+            res.send('dont try to hack')
+        }
+        else{
+            console.log(data);
+            res.send(data);
+        }
+    })
+})
 
 
