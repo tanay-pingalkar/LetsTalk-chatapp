@@ -5,7 +5,7 @@ const Messages= require("./msg.js");
 const Pusher=   require("pusher");
 const cors= require("cors");
 const User= require("./user.js");
-
+const Rooms= require("./rooms.js");
 
 
 
@@ -178,6 +178,46 @@ app.post('/getById/:id',(req , res)=>{
         else{
             console.log(data);
             res.send(data);
+        }
+    })
+});
+
+
+app.post('/addRoom/:id',(req , res)=>{
+    Rooms.find({roomName:req.body.roomName},(err,data)=>{
+        if(data.length===0){
+            Rooms.create(req.body,(err,data)=>{
+                if(err){
+                    console.log(err);
+                    res.send(err);
+                    
+                }
+                else{
+                    res.send(`room created \n ${data}`);
+                    User.findById({_id:req.params.id},(err,data)=>{
+                        if(err){
+                            console.log(err);
+                        }
+                        else{
+                            const rooms=data.roomsJoined;
+                            rooms.push(req.body.roomName);
+                            User.findOneAndUpdate({_id:req.params.id},{$set:{roomsJoined:rooms}}, {upsert:true},  (err,data)=>{
+                                if(err){
+                                    console.log('ok')
+                                }
+                                else{
+                                    console.log(data)
+                                }
+                            } );
+                        }
+                    })
+                    
+                }
+            })
+        }
+        else{
+            console.log("room name is already taken");
+            res.send('room name is already taken');
         }
     })
 })
