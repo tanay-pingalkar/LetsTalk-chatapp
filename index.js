@@ -193,7 +193,6 @@ app.post('/addRoom/:id',(req , res)=>{
                     
                 }
                 else{
-                    res.send(`room created \n ${data}`);
                     User.findById({_id:req.params.id},(err,data)=>{
                         if(err){
                             console.log(err);
@@ -206,7 +205,9 @@ app.post('/addRoom/:id',(req , res)=>{
                                     console.log('ok')
                                 }
                                 else{
-                                    console.log(data)
+                                    let roomInfo=data;
+                                    roomInfo.roomsJoined.push(req.body.roomName)
+                                    res.send(roomInfo)
                                 }
                             } );
                         }
