@@ -218,7 +218,44 @@ app.post('/addRoom/:id',(req , res)=>{
         }
         else{
             console.log("room name is already taken");
-            res.send('room name is already taken');
+            res.send('sorry');
+        }
+    })
+});
+
+
+
+app.post('/joinRoom/:id',(req,res)=>{
+    Rooms.find({roomName:req.body.roomName, roomPassword:req.body.roomPassword},(err,data)=>{
+        if(err){
+            res.send(err);
+            console.log(err);
+        }
+        else{
+            if(data.length===0){
+                res.send('sorry');
+            }
+            else{
+                User.findById({_id:req.params.id},(err,data)=>{
+                    if(err){
+                        console.log(err);
+                    }
+                    else{
+                        const rooms=data.roomsJoined;
+                        rooms.push(req.body.roomName);
+                        User.findOneAndUpdate({_id:req.params.id},{$set:{roomsJoined:rooms}}, {upsert:true},  (err,data)=>{
+                            if(err){
+                                console.log(err)
+                            }
+                            else{
+                                let roomInfo=data;
+                                roomInfo.roomsJoined.push(req.body.roomName)
+                                res.send(roomInfo)
+                            }
+                        } );
+                    }
+                });
+            }
         }
     })
 })
