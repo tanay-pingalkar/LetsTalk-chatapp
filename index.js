@@ -241,18 +241,23 @@ app.post('/joinRoom/:id',(req,res)=>{
                         console.log(err);
                     }
                     else{
-                        const rooms=data.roomsJoined;
-                        rooms.push(req.body.roomName);
-                        User.findOneAndUpdate({_id:req.params.id},{$set:{roomsJoined:rooms}}, {upsert:true},  (err,data)=>{
-                            if(err){
-                                console.log(err)
-                            }
-                            else{
-                                let roomInfo=data;
-                                roomInfo.roomsJoined.push(req.body.roomName)
-                                res.send(roomInfo)
-                            }
-                        } );
+                        if(data.roomsJoined.includes(req.body.roomName)){
+                            res.send('no');
+                        }
+                        else{
+                            const rooms=data.roomsJoined;
+                            rooms.push(req.body.roomName);
+                            User.findOneAndUpdate({_id:req.params.id},{$set:{roomsJoined:rooms}}, {upsert:true},  (err,data)=>{
+                                if(err){
+                                    console.log(err)
+                                }
+                                else{
+                                    let roomInfo=data;
+                                    roomInfo.roomsJoined.push(req.body.roomName)
+                                    res.send(roomInfo)
+                                }
+                            } );
+                        }
                     }
                 });
             }
