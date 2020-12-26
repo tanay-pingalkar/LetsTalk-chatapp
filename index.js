@@ -4,17 +4,21 @@ const mongoose= require("mongoose");
 const Messages= require("./msg.js");
 const Pusher=   require("pusher");
 const cors= require("cors");
-const User= require("./user.js");
-const Rooms= require("./rooms.js");
+const User= require("./db/user.js");
+const Rooms= require("./db/rooms.js");
 
 
+//*importing routers
+const addRoom=require("./Router/addRoom");
+const joinRoom=require("./Router/joinRoom");
+const getById=require("./Router/getById");
 
 //* app config
 const app=express();
 const PORT= process.env.PORT || 9000;
 const connection= 'mongodb+srv://admin:Pza8G2mWK8XCfQy7@cluster0.nvj33.mongodb.net/allDb?retryWrites=true&w=majority'
 
- 
+//*Pusher
 const pusher = new Pusher({
     appId: "1123475",
     key: "daaf1aa16c0739d32aca",
@@ -52,6 +56,9 @@ db.once('open',()=>{
 //* middleware
 app.use(express.json());
 app.use(cors());
+app.use('/getById', getById);
+app.use('/joinRoom',joinRoom)
+app.use('/addRoom', addRoom);
 
 
 //* DB config
@@ -160,109 +167,3 @@ io.on('connection', (socket) => {
     console.log('a user connected');
     
 });
-
-
-
-
-
-
-
-//* get...post....put...all magic
-
-app.post('/getById/:id',(req , res)=>{
-    const id= req.params.id;
-    User.findById(id , (err , data)=>{
-        if(err){
-            res.send('dont try to hack')
-        }
-        else{
-            console.log(data);
-            res.send(data);
-        }
-    })
-});
-
-
-app.post('/addRoom/:id',(req , res)=>{
-    Rooms.find({roomName:req.body.roomName},(err,data)=>{
-        if(data.length===0){
-            Rooms.create(req.body,(err,data)=>{
-                if(err){
-                    console.log(err);
-                    res.send(err);
-                    
-                }
-                else{
-                    User.findById({_id:req.params.id},(err,data)=>{
-                        if(err){
-                            console.log(err);
-                        }
-                        else{
-                            const rooms=data.roomsJoined;
-                            rooms.push(req.body.roomName);
-                            User.findOneAndUpdate({_id:req.params.id},{$set:{roomsJoined:rooms}}, {upsert:true},  (err,data)=>{
-                                if(err){
-                                    console.log('ok')
-                                }
-                                else{
-                                    let roomInfo=data;
-                                    roomInfo.roomsJoined.push(req.body.roomName)
-                                    res.send(roomInfo)
-                                }
-                            } );
-                        }
-                    })
-                    
-                }
-            })
-        }
-        else{
-            console.log("room name is already taken");
-            res.send('sorry');
-        }
-    })
-});
-
-
-
-app.post('/joinRoom/:id',(req,res)=>{
-    Rooms.find({roomName:req.body.roomName, roomPassword:req.body.roomPassword},(err,data)=>{
-        if(err){
-            res.send(err);
-            console.log(err);
-        }
-        else{
-            if(data.length===0){
-                res.send('sorry');
-            }
-            else{
-                User.findById({_id:req.params.id},(err,data)=>{
-                    if(err){
-                        console.log(err);
-                    }
-                    else{
-                        if(data.roomsJoined.includes(req.body.roomName)){
-                            res.send('no');
-                        }
-                        else{
-                            const rooms=data.roomsJoined;
-                            rooms.push(req.body.roomName);
-                            User.findOneAndUpdate({_id:req.params.id},{$set:{roomsJoined:rooms}}, {upsert:true},  (err,data)=>{
-                                if(err){
-                                    console.log(err)
-                                }
-                                else{
-                                    let roomInfo=data;
-                                    roomInfo.roomsJoined.push(req.body.roomName)
-                                    res.send(roomInfo)
-                                }
-                            } );
-                        }
-                    }
-                });
-            }
-        }
-    })
-})
-
-
