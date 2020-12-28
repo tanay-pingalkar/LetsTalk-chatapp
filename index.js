@@ -5,13 +5,16 @@ const Messages= require("./msg.js");
 const Pusher=   require("pusher");
 const cors= require("cors");
 const User= require("./db/user.js");
-const Rooms= require("./db/rooms.js");
 
 
 //*importing routers
 const addRoom=require("./Router/addRoom");
 const joinRoom=require("./Router/joinRoom");
 const getById=require("./Router/getById");
+const checkUser=require("./Router/checkUser");
+const addUser=require('./Router/addUser');
+
+
 
 //* app config
 const app=express();
@@ -59,6 +62,8 @@ app.use(cors());
 app.use('/getById', getById);
 app.use('/joinRoom',joinRoom)
 app.use('/addRoom', addRoom);
+app.use('/checkUser',checkUser);
+app.use('/addUser',addUser);
 
 
 //* DB config
@@ -104,50 +109,16 @@ app.get('/send/sync',(req,res)=>{
 })
 
 
-app.post('/addUser',(req, res) =>{
-    const user= req.body;
-    User.find({userName:req.body.userName},(err,data)=>{
-        if(data.length===0){
-            User.create(user , (err , data)=>{
-                if(err){
-                    res.status(500).send(err);
-                }
-                else{
-                    res.status(201).send(
-                        `new msg created \n ${data}`
-                    );
-                }
-        
-            });
-        }
-        else{
-            console.log('user exist');
-            res.send('user exist');
-            
-        }
-    })
-    
-    
-    
-});
 
 
 
-app.post('/checkUser', (req, res) =>{
-    User.find({userName:req.body.userName, userPassword:req.body.userPassword},(err,data)=>{
-        if(data.length===0){
-            res.send('error');
-            console.log('error');
-        }
-        else{
-            console.log('you are good to go');
-            res.send(data);
-        }
-    })
-})
 
-//* api routes
-app.get('/',(req,res)=>res.status(200).send('the server is up and running'))
+
+//* listening
+app.get('/',(req,res)=>res.status(200).send('the server is up and running'));
+
+
+//!cors policy error solved
 app.use((req,res, next)=>{
     res.setHeader('Access-Control-Allow-Origin',"http://localhost:3000");
     res.setHeader('Access-Control-Allow-Headers',"*");
