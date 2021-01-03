@@ -58,7 +58,7 @@ db.once('open',()=>{
 });
 //* middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors(app));
 app.use('/getById', getById);
 app.use('/joinRoom',joinRoom)
 app.use('/addRoom', addRoom);
