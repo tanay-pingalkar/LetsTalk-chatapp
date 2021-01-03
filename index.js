@@ -173,5 +173,5 @@ io.on('connection', (socket) => {
 });
 
 
-app.use('/',express.static('/gossip-frontend/build'))
+app.use('/',express.static('gossip-frontend/build'))
 
