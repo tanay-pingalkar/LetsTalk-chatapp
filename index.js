@@ -126,7 +126,7 @@ app.post('/prevRoom/:id',(req,res)=>{
 
 
 //* listening
-app.get('/',(req,res)=>res.status(200).send('the server is up and running'));
+
 
 
 //!cors policy error solved
@@ -172,6 +172,7 @@ io.on('connection', (socket) => {
     
 });
 
+
 if(process.env.NODE_ENV=== 'production'){
-    app.use(express.static('/gossip-frontend/build'))
+    app.use('/',express.static('/gossip-frontend/build'))
 }
