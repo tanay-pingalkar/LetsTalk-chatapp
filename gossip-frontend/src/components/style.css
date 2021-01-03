@@ -1,0 +1,613 @@
+.App{
+    height: 100vh;
+    background-image :linear-gradient(125deg,rgb(208, 208, 255),rgb(182, 177, 255));
+    background-image: url('bg.jpg');
+    background-size: cover;
+    
+}
+.card{
+    
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    
+    
+}
+.form{
+    width: 50vh;
+    height: 60vh;
+    position: absolute;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    top: 50%;
+    box-shadow: 0 0  1rem 0 black;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+    transition: 0.2s ease;
+     
+}
+
+.form:hover{
+    animation: anima 0.3s ease-in;
+}
+@keyframes anima{
+    
+    0%{
+        left: 49%;
+        
+    }
+    50%{
+        left: 51%;
+    }
+}
+
+.form input{
+    margin-left: 27px;
+    width: 78%;
+    margin-top: 10vh;
+    height: 30px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid  white;
+    outline: none;
+    color:white;
+    font-size: 30px;
+}
+.form input::placeholder{
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 25px;
+}
+.flex{
+    display: flex;
+    justify-content: space-evenly;
+}
+.login, .addRoom button{
+    
+    width: 30%;
+    height: 10%;
+    margin-left:35%;
+    margin-top: 50px;
+    border: 2px solid white;
+    color:white;
+    font-size: 20px;
+    outline: none;
+    border-radius: 3px;
+    background: none;
+    transition: 0.5s ease;
+}
+.form button:hover, .addRoom button:hover{
+    background-color: white;
+    color:black;
+}
+.signin:hover{
+    position: relative;
+    font-weight: bolder;
+    
+}
+.start{
+    width:60%;
+    border: 2px solid white;
+    color:white;
+    font-size: 20px;
+    outline: none;
+    border-radius: 3px;
+    background: none;
+    height: 10%;
+    margin-left: 20%;
+    margin-top: 10%;
+    transition: 0.5s ease;
+
+}
+.good{
+    color: white;
+    text-align: center;
+    margin-top: 30%;
+    font-size: 30px;
+}
+
+/* chat app ui */
+.bg{
+    max-height: 85vh;
+    margin-top:-21px;
+    
+}
+
+.main-div{
+    margin: auto;
+    display: block;
+    min-height: 99.75vh;
+    
+    max-width: 367px;
+
+
+    background-image: url('bg.jpg');
+    background-size: cover;
+    border: 1px solid rgba(255, 253, 253, 0.226);
+    background-color: rgba(240, 248, 255, 0.281);
+    box-shadow: rgba(255, 255, 255, 0.83) -6px -6px 26px 0,rgba(0, 0, 0, 0.8) 6px 6px 26px 0;
+    margin-top: 21px;
+}
+
+.navi{
+    position: relative;
+    top:0%;
+    width:99%;
+    margin-left: 2px;
+    height:55vh;
+    background-color: rgba(255, 255, 255, 0.11);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    backdrop-filter: blur(10px);
+    transition: 0.2s ease;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset ;
+}
+
+.navi:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset , rgba(0, 0, 0, 0.445) 0px 20px 25px -5px, rgba(0, 0, 0, 0.582) 0px 10px 10px -5px;
+}
+
+.angle-down{
+    color:rgba(255, 255, 255, 0.7);
+    
+}
+
+.angle-down:hover{
+    color:white;
+}
+.bottom-navi{
+    position: absolute;
+    top: 91%;
+    width:100%;
+    justify-content: space-around;
+    display: flex;
+
+}
+.bottom-navi-two{
+    position: absolute;
+    top: 95%;
+    width:100%;
+    justify-content: space-around;
+    display: flex;
+}
+.bottom-navi h4,.bottom-navi-two h4{
+    margin-top: 5px;
+    color: rgba(248, 248, 248, 0.7);
+    font-weight:lighter;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+.bottom-navi h4:hover{
+    color:white;
+}
+
+.navi-full{
+    position: relative;
+    top:0%;
+    width: 99%;
+    margin-left: 2px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.11);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    backdrop-filter: blur(10px);
+    transition: 0.2s ease;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset ;
+}
+.noStyle{
+    position: relative;
+    top:0%;
+    width:99%;
+    margin-left: 2px;
+    height:300px;
+    margin-top: -275px;
+    background-color: rgba(255, 255, 255, 0.11);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    backdrop-filter: blur(10px);
+    transition: 0.2s ease;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset ;
+}
+.bandit{
+    overflow: hidden;
+}
+
+.room{
+    position:absolute;
+    top:85%;
+    width:96%;
+    background-color: rgba(255, 255, 255, 0.24);
+    margin-left: 2%;
+    text-align: center;
+    color:white;
+    border-radius: 10px;
+    border:1px solid rgba(5, 179, 231, 0.164);
+    transition:0.2s ease;
+    font-weight: lighter;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+.room:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset ;
+}
+.rooms-add{
+    color:white;
+    border-radius:10px;
+    background-color: rgba(240, 255, 255, 0.356);
+    width:100px;
+    position: relative;
+    text-align:center;
+    margin-left: 5%;
+    padding:1px;
+    border:1px solid rgba(5, 179, 231, 0.164);
+    transition:0.2s ease;
+    
+}
+.rooms-add:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset ;
+}
+.rooms-con{
+    position: relative;
+    top:-18px;
+    display:flex;
+    justify-content: space-between;
+    
+
+}
+.rooms-con div{
+    display: flex;
+}
+.rooms-con h4{
+    color:rgba(255, 255, 255, 0.801);
+    margin-right:10px;
+    font-weight: lighter;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.rooms-add:nth-child(2){
+    width:25px;
+    padding:2px;
+    
+}
+.roomName {
+    color:white;
+    border-bottom:1px solid rgba(255, 255, 255, 0.349);
+    box-sizing: border-box;
+    width:98%;
+    padding:5px;
+    transition:0.2s ease;
+}
+.roomTab{
+    position:relative;
+    top:-30px;
+    overflow-y:scroll;
+    overflow-x: hidden;
+    height: 70%;
+    left:3%;
+    width:95%;
+}
+
+.roomName:hover{
+    border-bottom: 2px solid white ;
+    animation:wow 0.3s ease-out forwards;
+    box-sizing: border-box;
+}
+@keyframes wow{
+    0%{
+        background: rgb(255,255,255);
+        background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(253,187,45,0.1) 1%);
+    }
+    10%{
+        background: rgb(255,255,255);
+        background: radial-gradient(circle, rgba(255,255,255,1) 10%, rgba(255, 255, 255, 0.1) 11%);
+    }
+    20%{
+        background: rgb(255,255,255);
+        background: radial-gradient(circle, rgba(255,255,255,0.9) 20%, rgba(253,187,45,0.1) 21%);
+    }
+    30%{
+        background: rgb(255,255,255);
+        background: radial-gradient(circle, rgba(255,255,255,0.8) 30%, rgba(253,187,45,0.1) 31%);
+    }
+    40%{
+        background: rgba(255, 255, 255, 0.3);
+        background: radial-gradient(circle, rgba(255,255,255,0.7) 40%, rgba(253,187,45,0.1) 41%);
+    }
+    50%{
+        background: rgb(255,255,255);
+        background: radial-gradient(circle, rgba(255,255,255,0.6) 50%, rgba(253,187,45,0.1) 51%);
+    }
+    60%{
+        background: rgb(255,255,255);
+        background: radial-gradient(circle, rgba(255,255,255,0.6) 60%, rgba(253,187,45,0.1) 61%);
+    }
+    70%{
+        background: rgb(255,255,255);
+        background: radial-gradient(circle, rgba(255,255,255,0.5) 70%, rgba(253,187,45,0.1) 71%);
+    }
+    80%{
+        background: rgb(255,255,255);
+        background: radial-gradient(circle, rgba(255,255,255,0.5) 80%, rgba(253,187,45,0.1) 81%);
+    }
+    90%{
+        background: rgb(255,255,255);
+        background: radial-gradient(circle, rgba(255,255,255,0.4) 90%, rgba(253,187,45,0.1) 91%);
+    }
+    100%{
+        background: rgb(255,255,255);
+        background: radial-gradient(circle, rgba(255,255,255,0.3) 100%, rgba(253,187,45,0) 100%);
+    }
+}
+.roomName2{
+    border-bottom: 2px solid white ;
+    background-color: rgba(245, 168, 210, 0.253);
+    box-sizing: border-box;
+}
+.roomTab::-webkit-scrollbar {
+    width: 5px;
+}
+.roomTab::-webkit-scrollbar-thumb {
+    background: #ffffff69;
+    width:4px;
+}
+
+.addRoom{
+    width: 40vh;
+    height: 40vh;
+    position: absolute;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    top: 50%;
+    box-shadow: 0 0  1rem 0 black;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+    transition: 0.2s ease;
+    animation: trans 0.5s ease-in-out ;
+    
+}
+
+.addRoom input{
+    margin-left: 27px;
+    width: 78%;
+    margin-top: 5vh;
+    height: 30px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid  white;
+    outline: none;
+    color:white;
+    font-size: 20px;
+}
+.addRoom span{
+    color:rgb(255, 255, 255);
+    position: relative;
+    left: 90%;
+    top:2%;
+}
+@keyframes trans{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.RoomChat{
+    position: absolute;
+    min-height: 99.75vh;
+    top:0%;
+
+}
+.bottom{
+    position: absolute;
+    top:93vh;
+    max-width: 68vh;
+    display:flex;
+    margin-left: 1vh;
+
+}
+.bottom input{
+    border:none;
+    border-radius: 10px;
+    height: 22px;
+    width: 305px;
+    border:1px solid rgba(5, 179, 231, 0.164);
+    background-color: rgba(255, 255, 255, 0.24);
+    backdrop-filter: blur(10px);
+    outline: none;
+    color:white;
+    font-size: 15px;
+    padding-left: 10px;
+}
+.bottom button{
+    border:none;
+    border-radius: 10px;
+    height: 26px;
+    margin-left:10px;
+    backdrop-filter: blur(10px);
+    border:1px solid rgba(5, 179, 231, 0.164);
+    background-color: rgba(255, 255, 255, 0.24);
+    color: rgb(44, 42, 66);
+    outline: none;
+}
+.bottom button:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset ;
+}
+.chats{
+    
+    background-color: rgba(255, 255, 255, 0);
+    height: 43vh;
+    
+    width:350px;
+    margin-left: 8px;
+    
+}
+.aoto{
+    
+    padding: 5% 0;
+    
+    margin-top: 20px;
+    overflow: auto;
+    flex: auto;
+}
+
+.place{
+    position: absolute;
+    top:52vh;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: #ffffff69;
+    width:4px;
+}
+    
+.left-2{
+    display: flex;
+    justify-content: space-between;
+}
+.none{
+    color:rgba(0, 0, 0, 0.0);
+}
+.left-1{
+    position: relative;
+    color: white;
+    border:1px solid rgba(255, 255, 255, 0.486);
+    border-radius: 20px;
+    max-width: 50%;
+    background-color: rgba(255, 255, 255, 0.253);
+    padding: 5px;
+    backdrop-filter: blur(10px);
+    overflow-wrap: break-word;
+}
+.message{
+    position: relative;
+    color: rgb(255, 255, 255);
+    border:1px solid rgba(255, 255, 255, 0.336);
+    border-radius: 20px;
+    overflow-wrap: break-word;
+}
+.let{
+    position: relative;
+    display:inline-block;
+    max-width: 50%;
+    overflow-wrap: break-word;
+    color: rgb(255, 255, 255);
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    background-color: rgb(255, 255, 255);
+    border:1px solid rgba(174, 155, 252,0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 2, 0.2)
+}
+
+
+.let div{
+    display: inline-block;
+    font-size: 12px;
+    width: 100%;
+    position: relative;
+    top: -5px;
+}
+@media only screen and (max-width: 383px){
+    .chats{
+        width: 340px;
+    }
+    .bottom{
+        width:340px;
+    }
+}
+@media only screen and (max-width: 383px){
+    .chats{
+        width: 340px;
+    }
+    .bottom{
+        width:340px;
+    }
+}
+@media only screen and (max-width: 383px){
+    .chats{
+        width: 340px;
+    }
+    .bottom{
+        width:340px;
+    }
+}
+@media only screen and (max-width: 370px){
+    .chats{
+        width: 335px;
+    }
+    .bottom{
+        width:335px;
+    }
+}
+@media only screen and (max-width: 355px){
+    .chats{
+        width: 325px;
+    }
+    .bottom{
+        width:325px;
+    }
+}
+@media only screen and (max-width: 345px){
+    .chats{
+        width: 315px;
+    }
+    .bottom{
+        width:315px;
+    }
+}
+@media only screen and (max-width: 335px){
+    .chats{
+        width: 300px;
+    }
+    .bottom{
+        width:300px;
+    }
+}
+@media only screen and (max-width: 320px){
+    .chats{
+        width: 295px;
+    }
+    .bottom{
+        width:295px;
+    }
+}
+@media only screen and (max-width: 310px){
+    .chats{
+        width: 290px;
+    }
+    .bottom{
+        width:290px;
+    }
+}
+@media only screen and (max-width: 310px){
+    .chats{
+        width: 280px;
+    }
+    .bottom{
+        width:280px;
+    }
+}
+@media only screen and (max-width: 298px){
+    .chats{
+        width: 270px;
+    }
+    .bottom{
+        width:270px;
+    }
+}
+
+
+
+
+
