@@ -105,6 +105,18 @@ app.post('/send/sync',(req,res)=>{
 
     })
 
+});
+
+
+app.post('/prevRoom/:id',(req,res)=>{
+    User.findOneAndUpdate({_id:req.params.id},{$set:{prevRoom:req.body.prevRoom}}, {upsert:true},  (err,data)=>{
+        if(err){
+            console.log(err)
+        }
+        else{
+            res.send(data)
+        }
+    } );
 })
 
 
