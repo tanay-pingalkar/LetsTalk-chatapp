@@ -92,16 +92,15 @@ app.post('/send',(req,res)=>{
     })
 
 });
-app.get('/send/sync',(req,res)=>{
-    
-    Messages.find( (err , data)=>{
+app.post('/send/sync',(req,res)=>{
+    console.log(req.body.prevRoom)
+    Messages.find({prevRoom:req.body.prevRoom},(err , data)=>{
         if(err){
             res.status(500).send(err);
         }
         else{
-            res.status(200).send(
-                `new msg created \n ${data}`
-            );
+            res.status(200).send(data);
+            
         }
 
     })
@@ -134,7 +133,29 @@ app.use((req,res, next)=>{
 //* socketio
 const server = app.listen(PORT,()=>console.log(`listening on port ${PORT}`));
 var io = require('socket.io').listen(server);
+let roomN;
 io.on('connection', (socket) => {
     console.log('a user connected');
+    socket.on('join',(room)=>{
+        if(room==='none'){
+            console.log('no room found');
+        }
+        else{
+            socket.join(room);
+        }
+    });
+    socket.on('send',(messageData)=>{
+        console.log(messageData);
+        Messages.create(messageData , (err , data)=>{
+            if(err){
+                console.log(err)
+            }
+            else{
+                console.log(data);
+            }
+    
+        })
+        io.to(messageData.prevRoom).emit('message',{'text':messageData.text,'room':messageData.prevRoom,'userName':messageData.userName})
+    })
     
 });
