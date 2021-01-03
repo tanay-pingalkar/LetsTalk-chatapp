@@ -18,7 +18,7 @@ const addUser=require('./Router/addUser');
 
 //* app config
 const app=express();
-const PORT= process.env.PORT || 9000;
+const PORT= process.env.PORT || 5000;
 const connection= 'mongodb+srv://admin:Pza8G2mWK8XCfQy7@cluster0.nvj33.mongodb.net/allDb?retryWrites=true&w=majority'
 
 //*Pusher

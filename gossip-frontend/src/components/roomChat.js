@@ -11,7 +11,7 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 
 //! ENDPOINT and socket
-const ENDPOINT= 'http://localhost:9000/';
+const ENDPOINT= 'https://workingchatapp.herokuapp.com/';
 let socket
 
 const RoomChat=()=>{
@@ -24,7 +24,7 @@ const RoomChat=()=>{
     
 
     useEffect(()=>{
-        socket=io.connect(ENDPOINT);
+        socket=io.connect();
         console.log(prevRoom)
         socket.emit('join',prevRoom);
         console.log(socket);
