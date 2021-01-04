@@ -1,4 +1,4 @@
-# gossips-backend
+# Lets talk
 
 
 this is gossip's backend. Its an api or i called it server. 
