@@ -8,4 +8,4 @@ and some start script
     "install-client": "cd client && npm install",
     "heroku-postbuild":"npm run install-client && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },``
+  },
