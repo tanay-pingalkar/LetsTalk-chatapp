@@ -11,7 +11,7 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 
 //! ENDPOINT and socket
-const ENDPOINT= 'https://workingchatapp.herokuapp.com/';
+const ENDPOINT= '';
 let socket
 
 const RoomChat=()=>{
@@ -20,13 +20,21 @@ const RoomChat=()=>{
     const [messages,setmessages]= useState([])
     const prevRoom=useSelector(state=> state.prevRoom);
     const userName=useSelector(state=>state.userData.userName);
-    
+    const newStyle=useSelector(state=> state.naviStyle);
+    const [style, setstyle] = useState('chats');
+    const [place, setplace] = useState('place');
     
 
     useEffect(()=>{
+        if(socket!==undefined){
+            socket.emit('disconnect');
+            socket.off()
+        }
         socket=io.connect();
         console.log(prevRoom)
+        if(prevRoom!=='none'){
         socket.emit('join',prevRoom);
+        }
         console.log(socket);
         axios.post('/send/sync',{'prevRoom':prevRoom})
         .then((Response)=>{
@@ -42,12 +50,23 @@ const RoomChat=()=>{
         socket.emit('send', {text,prevRoom,userName,});
         settext('');
     }
+    useEffect(()=>{
+        if(newStyle==='noStyle'){
+            setstyle('thatsit');
+            setplace('place2')
+        }
+        else{
+            setstyle('chats');
+            setplace('place')
+        }
+    },[newStyle])
+
     console.log(messages)
     return(
         <div className='RoomChat'>
-                <div class='place'>
+                <div class={place}>
                     <ScrollToBottom class='aoto'>
-                        <div class='chats'>
+                        <div class={style}>
                             {messages.map((message, i)=><Message user={message.userName} text={message.text}/>)}
                         </div>
                     </ScrollToBottom>

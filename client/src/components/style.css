@@ -362,7 +362,7 @@
     background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     top: 50%;
-    box-shadow: 0 0  1rem 0 black;
+    box-shadow: 0 0  10px 2px rgba(0, 0, 0, 0.219);
     left: 50%;
     transform: translate(-50%, -50%);  
     transition: 0.2s ease;
@@ -381,6 +381,9 @@
     outline: none;
     color:white;
     font-size: 20px;
+}
+.addRoom input::placeholder{
+    color:rgb(199, 199, 199);
 }
 .addRoom span{
     color:rgb(255, 255, 255);
@@ -447,6 +450,13 @@
     margin-left: 8px;
     
 }
+.thatsit{
+    background-color: rgba(255, 255, 255, 0);
+    height: 94vh;
+    
+    width:350px;
+    margin-left: 8px;
+}
 .aoto{
     
     padding: 5% 0;
@@ -459,6 +469,10 @@
 .place{
     position: absolute;
     top:52vh;
+}
+.place2{
+    position: absolute;
+    top:1vh;
 }
 ::-webkit-scrollbar {
     width: 5px;
@@ -519,7 +533,7 @@
     top: -5px;
 }
 @media only screen and (max-width: 383px){
-    .chats{
+    .chats, .thatsit{
         width: 340px;
     }
     .bottom{
@@ -527,7 +541,7 @@
     }
 }
 @media only screen and (max-width: 383px){
-    .chats{
+    .chats, .thatsit{
         width: 340px;
     }
     .bottom{
@@ -535,7 +549,7 @@
     }
 }
 @media only screen and (max-width: 383px){
-    .chats{
+    .chats, .thatsit{
         width: 340px;
     }
     .bottom{
@@ -543,7 +557,7 @@
     }
 }
 @media only screen and (max-width: 370px){
-    .chats{
+    .chats, .thatsit{
         width: 335px;
     }
     .bottom{
@@ -551,7 +565,7 @@
     }
 }
 @media only screen and (max-width: 355px){
-    .chats{
+    .chats, .thatsit{
         width: 325px;
     }
     .bottom{
@@ -559,7 +573,7 @@
     }
 }
 @media only screen and (max-width: 345px){
-    .chats{
+    .chats, .thatsit{
         width: 315px;
     }
     .bottom{
@@ -567,7 +581,7 @@
     }
 }
 @media only screen and (max-width: 335px){
-    .chats{
+    .chats, .thatsit{
         width: 300px;
     }
     .bottom{
@@ -575,7 +589,7 @@
     }
 }
 @media only screen and (max-width: 320px){
-    .chats{
+    .chats, .thatsit{
         width: 295px;
     }
     .bottom{
@@ -583,7 +597,7 @@
     }
 }
 @media only screen and (max-width: 310px){
-    .chats{
+    .chats, .thatsit{
         width: 290px;
     }
     .bottom{
@@ -599,7 +613,7 @@
     }
 }
 @media only screen and (max-width: 298px){
-    .chats{
+    .chats, .thatsit{
         width: 270px;
     }
     .bottom{

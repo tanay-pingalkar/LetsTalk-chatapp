@@ -12,8 +12,7 @@ import JoinRoom from './room-config/joinRoom';
 import AddRoom from './room-config/addRoom';
 import hit from './reducer/action/hit';
 import ChangePrevRoom from './reducer/action/changePrevRoom';
-
-
+import changeNaviStyle from './reducer/action/changeNaviStyle';
 
 
 const Shutter=(props)=>{
@@ -22,11 +21,11 @@ const Shutter=(props)=>{
     const bullone=useSelector(state=>state.bullone);
     const bulltwo=useSelector(state=>state.bulltwo);
     const prevRoom=useSelector(state=>state.prevRoom)
-
+    const NaviStyle=useSelector(state=>state.naviStyle)
     const dispatch = useDispatch();
 
     //* style variable
-    const [NaviStyle, setNaviStyle] = useState('navi');
+    //const [NaviStyle, setNaviStyle] = useState('navi');
     const [bottomNavi, setBNstyle] = useState('bottom-navi');
 
 
@@ -61,21 +60,21 @@ const Shutter=(props)=>{
                     <div className='angle-down'>
                         <FontAwesomeIcon onClick={()=>{ 
                             if(NaviStyle==='navi'){
-                                setNaviStyle('navi-full');
+                                dispatch(changeNaviStyle('navi-full'));
                                 setBNstyle('bottom-navi-two')
                             }
                             else{
-                                setNaviStyle('navi');
+                                dispatch(changeNaviStyle('navi'));
                             }
                              
                         }} icon={ faAngleDown } size='2x' className='arrow'/>
                         <FontAwesomeIcon onClick={()=>{ 
                             if(NaviStyle==='navi-full'){
-                                setNaviStyle('navi');
+                                dispatch(changeNaviStyle('navi'));
                                 setBNstyle('bottom-navi')
                             }
                             else{
-                                setNaviStyle('noStyle');
+                                dispatch(changeNaviStyle('noStyle'));
                             }
                             }}   icon={ faAngleUp } size='2x' className='arrow'/>
                     </div>

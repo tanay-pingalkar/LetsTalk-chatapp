@@ -130,14 +130,12 @@ app.post('/prevRoom/:id',(req,res)=>{
 
 
 //!cors policy error solved
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", 'https://5ff18f9bdc7e5897b7feb5a2--wowchatapp.netlify.app/');
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+app.use((req,res, next)=>{
+    res.setHeader('Access-Control-Allow-Origin',"http://localhost:3000");
+    res.setHeader('Access-Control-Allow-Headers',"*");
+    res.header('Access-Control-Allow-Credentials', true);
     next();
 });
-
 //* listener
 
 
@@ -156,6 +154,9 @@ io.on('connection', (socket) => {
             socket.join(room);
         }
     });
+    socket.on('disconnect',()=>{
+        console.log('lala');
+    })
     socket.on('send',(messageData)=>{
         console.log(messageData);
         Messages.create(messageData , (err , data)=>{

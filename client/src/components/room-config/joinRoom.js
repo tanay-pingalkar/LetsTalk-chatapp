@@ -50,8 +50,8 @@ const JoinRoom=(props)=>{
             <span onClick={()=>dispatch(hit('joinRoom'))}>
                 <FontAwesomeIcon icon={faTimes} size='1x'/><br></br>
             </span>
-            <input onChange={e=>setroomName(e.target.value)}></input><br></br>
-            <input onChange={e=>setroomPassword(e.target.value)}></input><br></br>
+            <input placeholder='room name'onChange={e=>setroomName(e.target.value)}></input><br></br>
+            <input placeholder='room password' type='password'onChange={e=>setroomPassword(e.target.value)}></input><br></br>
             <button onClick={joinNewRoom} type='submit'>join</button>
         </form>
     )
