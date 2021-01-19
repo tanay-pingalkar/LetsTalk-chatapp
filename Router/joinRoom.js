@@ -24,14 +24,32 @@ route.post('/:id',(req,res)=>{
                         }
                         else{
                             const rooms=data.roomsJoined;
-                            rooms.push(req.body.roomName);
+                            rooms.unshift(req.body.roomName);
+                            
                             User.findOneAndUpdate({_id:req.params.id},{$set:{roomsJoined:rooms}}, {upsert:true},  (err,data)=>{
                                 if(err){
                                     console.log(err)
                                 }
                                 else{
                                     let roomInfo=data;
-                                    roomInfo.roomsJoined.push(req.body.roomName)
+                                    Rooms.findOne({roomName:req.body.roomName},(err,data)=>{
+                                        if(err){
+                                            res.send(err);
+                                        }
+                                        else{
+                                            let peoples=data.people;
+                                            peoples.unshift(roomInfo.userName)
+                                            Rooms.findOneAndUpdate({roomName:req.body.roomName},{$set:{people:peoples}},{upsert:true},(err,data)=>{
+                                                if(err){
+                                                    console.log(err);
+                                                }
+                                                else{
+                                                    console.log(data)
+                                                }
+                                            })
+                                        }
+                                    })
+                                    roomInfo.roomsJoined.unshift(req.body.roomName)
                                     res.send(roomInfo)
                                 }
                             } );

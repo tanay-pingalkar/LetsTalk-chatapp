@@ -4,7 +4,9 @@ import {useSelector, useDispatch} from 'react-redux';
 import { faAngleDown , faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cdate from './date.js';
-import axios from './axios'
+import axios from './axios';
+import Room from './room.js';
+
 
 
 //!actions imported
@@ -23,20 +25,7 @@ const Shutter=(props)=>{
     const prevRoom=useSelector(state=>state.prevRoom)
     const NaviStyle=useSelector(state=>state.naviStyle)
     const dispatch = useDispatch();
-
-    //* style variable
-    //const [NaviStyle, setNaviStyle] = useState('navi');
     const [bottomNavi, setBNstyle] = useState('bottom-navi');
-
-
-
-    //*dispatch and update in database
-    const setPrev=(room)=>{
-        axios.post(`/prevRoom/${userData._id}`,{
-            prevRoom:room
-        });
-        dispatch(ChangePrevRoom(room));
-    }
 
 
     return(
@@ -52,7 +41,7 @@ const Shutter=(props)=>{
                         
                 </div>
                 <div className='roomTab'>
-                    {userData.roomsJoined.map((room, i) =><p className="roomName" onClick={()=>setPrev(room)}>{room}</p>)}
+                    {userData.roomsJoined.map((room, i) =><Room room={room} />)}
                 </div>
                 <div className='room'>Room</div>
                 <span className={bottomNavi}>

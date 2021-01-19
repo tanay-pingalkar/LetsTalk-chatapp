@@ -32,7 +32,11 @@ function Signin() {
       {(wow)?(
         <form className='form'>
 
-          <input  onChange={(e)=>setuserName(e.target.value)} placeholder='username'></input>
+          <input  onChange={(e)=>{
+            let val=e.target.value;
+            let rn=val.replace(/\s/g, '-');
+            setuserName(rn)
+          }} placeholder='username' value={userName}></input>
           <input  onChange={(e)=>setpassword(e.target.value)} placeholder='password'></input>
           <button onClick={post} type='submit' className='login'>sign in</button>
         </form>

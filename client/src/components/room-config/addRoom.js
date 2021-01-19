@@ -42,7 +42,11 @@ const AddRoom=(props)=>{
                 <FontAwesomeIcon icon={faTimes} size='1x'/><br></br>
             </span>
                     
-            <input placeholder='room name'onChange={e=>setroomName(e.target.value)}></input><br></br>
+            <input placeholder='room name'onChange={e=>{
+                let val=e.target.value;
+                let rn=val.replace(/\s/g, '-');
+                setroomName(rn)
+            }} value={roomName}></input><br></br>
             <input placeholder='room password' type='password'onChange={e=>setroomPassword(e.target.value)}></input><br></br>
             <button onClick={postNewRoom} type='submit'>add</button>
         </form>

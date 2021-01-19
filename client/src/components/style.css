@@ -279,6 +279,8 @@
     width:98%;
     padding:5px;
     transition:0.2s ease;
+    display: inline-flex;
+    height:40px;
 }
 .roomTab{
     position:relative;
@@ -295,6 +297,44 @@
     animation:wow 0.3s ease-out forwards;
     box-sizing: border-box;
 }
+.roomClick{
+    color:white;
+    border-bottom:1px solid rgba(255, 255, 255, 0.349);
+    box-sizing: border-box;
+    width:98%;
+    padding:5px;
+    transition:0.2s ease;
+    border-bottom: 2px solid white ;
+    animation:wow 0.3s ease-out forwards;
+    display: flex;
+    height:40px;
+    justify-content: space-between;
+}
+.roomClick p, .roomName p{
+    position: relative;
+    bottom:13px;
+}
+
+.arrow2{
+    transition: 0.2s ease;
+    border-radius: 50%;
+    padding-left:6px;
+    padding-right: 6px;
+    position: relative;
+    bottom:2px;
+}
+.arrow2:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    padding-left:6px;
+    padding-right: 6px;
+    position: relative;
+    bottom:2px;
+
+}
+
+
+
 @keyframes wow{
     0%{
         background: rgb(255,255,255);
@@ -493,7 +533,9 @@
     position: relative;
     color: white;
     border:1px solid rgba(255, 255, 255, 0.486);
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
     max-width: 50%;
     background-color: rgba(255, 255, 255, 0.253);
     padding: 5px;
@@ -519,7 +561,9 @@
     padding-right: 5px;
     background-color: rgb(255, 255, 255);
     border:1px solid rgba(174, 155, 252,0.5);
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 2, 0.2)
 }

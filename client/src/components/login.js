@@ -42,7 +42,11 @@ function Login() {
       {(wow)?(
         <div className='card'>
           <form className='form'>
-            <input   placeholder='username'onChange={(e)=>setname(e.target.value)} ></input>
+            <input   placeholder='username'onChange={(e)=>{
+              let val=e.target.value;
+              let rn=val.replace(/\s/g, '-');
+              setname(rn)
+            }} ></input>
             <input onChange={(e)=>setpassword(e.target.value)} placeholder='password' type="password"></input><br></br>
             <button className='login'onClick={authFunc}type='submit'>Login</button><br></br>
             <div className='flex'>

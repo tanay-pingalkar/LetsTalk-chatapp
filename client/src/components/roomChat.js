@@ -11,7 +11,7 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 
 //! ENDPOINT and socket
-const ENDPOINT= '';
+const ENDPOINT= 'http://localhost:5000/';
 let socket
 
 const RoomChat=()=>{
@@ -30,7 +30,7 @@ const RoomChat=()=>{
             socket.emit('disconnect');
             socket.off()
         }
-        socket=io.connect();
+        socket=io.connect(ENDPOINT);
         console.log(prevRoom)
         if(prevRoom!=='none'){
         socket.emit('join',prevRoom);
@@ -75,7 +75,16 @@ const RoomChat=()=>{
             
             <form className='bottom'>
                 <input value={text}onChange={(e)=>{settext(e.target.value)}}></input>
-                <button onClick={(e)=>send(e)}><FontAwesomeIcon icon={faPaperPlane}></FontAwesomeIcon></button>
+                <button onClick={(e)=>{
+                        if(prevRoom==='none'){
+                            e.preventDefault();
+                            alert("Please join or add room to chat. You don't have permission to talk here.");
+                        }
+                        else{
+                            send(e);
+                        }
+                    }
+                }><FontAwesomeIcon icon={faPaperPlane}></FontAwesomeIcon></button>
             </form>
         </div>
     )

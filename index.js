@@ -19,7 +19,8 @@ const addUser=require('./Router/addUser');
 //* app config
 const app=express();
 const PORT= process.env.PORT || 5000;
-const connection= 'mongodb+srv://admin:Pza8G2mWK8XCfQy7@cluster0.nvj33.mongodb.net/allDb?retryWrites=true&w=majority'
+//mongodb+srv://admin:Pza8G2mWK8XCfQy7@cluster0.nvj33.mongodb.net/allDb?retryWrites=true&w=majority
+const connection= 'mongodb://admin:Pza8G2mWK8XCfQy7@cluster0-shard-00-00.nvj33.mongodb.net:27017,cluster0-shard-00-01.nvj33.mongodb.net:27017,cluster0-shard-00-02.nvj33.mongodb.net:27017/allDb?ssl=true&replicaSet=atlas-vngvpu-shard-0&authSource=admin&retryWrites=true&w=majority'
 
 //*Pusher
 const pusher = new Pusher({
@@ -131,7 +132,7 @@ app.post('/prevRoom/:id',(req,res)=>{
 
 //!cors policy error solved
 app.use((req,res, next)=>{
-    res.setHeader('Access-Control-Allow-Origin',"*");
+    res.setHeader('Access-Control-Allow-Origin',"http://localhost:3000/");
     res.setHeader('Access-Control-Allow-Headers',"*");
     res.header('Access-Control-Allow-Credentials', true);
     next();
@@ -174,5 +175,5 @@ io.on('connection', (socket) => {
 });
 
 
-app.use('/',express.static('client/build'))
+
 

@@ -1,15 +1,10 @@
-const prevRoom= (state='', action)=>{
+const prevRoom= (state='none', action)=>{
     switch(action.type){
         case 'ChangePrevRoom':
             return state=action.payload;
-        case 'ChangeNaviStyle':
-            return state;
-        case 'joinRoom':
-            return state;
-        case 'addRoom':
-            return state;
         default:
-            return state='none';
+            return state;
+
     }
 }
 export default prevRoom;
