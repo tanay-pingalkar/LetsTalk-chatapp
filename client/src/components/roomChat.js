@@ -31,11 +31,9 @@ const RoomChat=()=>{
             socket.off()
         }
         socket=io.connect(ENDPOINT);
-        console.log(prevRoom)
         if(prevRoom!=='none'){
         socket.emit('join',prevRoom);
         }
-        console.log(socket);
         axios.post('/send/sync',{'prevRoom':prevRoom})
         .then((Response)=>{
             setmessages(Response.data)
@@ -44,7 +42,6 @@ const RoomChat=()=>{
             setmessages(messages => [ ...messages, message ]);
         });
     },[prevRoom]);
-    console.log(userName);
     const send= (event)=>{
         event.preventDefault();
         socket.emit('send', {text,prevRoom,userName,});
@@ -60,8 +57,6 @@ const RoomChat=()=>{
             setplace('place')
         }
     },[newStyle])
-
-    console.log(messages)
     return(
         <div className='RoomChat'>
                 <div class={place}>

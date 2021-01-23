@@ -289,6 +289,7 @@
     overflow-x: hidden;
     height: 70%;
     left:3%;
+    border-radius: 3px;
     width:95%;
 }
 .wow{

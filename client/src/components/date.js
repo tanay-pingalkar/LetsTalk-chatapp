@@ -17,7 +17,6 @@ if(mm<10)
     mm='0'+mm;
 } 
 today = mm+'/'+dd+'/'+yyyy;
-console.log(today);
 
 
 const Cdate=()=>{
@@ -36,7 +35,6 @@ const Cdate=()=>{
         mm='0'+mm;
     } 
     today = mm+'/'+dd+'/'+yyyy;
-    console.log(today);
     return(
         <div>
             <h4>{today}</h4>

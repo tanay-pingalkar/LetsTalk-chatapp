@@ -14,7 +14,6 @@ function Login() {
 
   //redux
   const bull=useSelector(state=> state.isLogged);
-  console.log(bull);
   const dispatch=useDispatch();
   if(wow){
     if(bull){

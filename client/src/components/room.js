@@ -22,11 +22,6 @@ const Room=(room)=>{
         });
         dispatch(ChangePrevRoom(room));
     }
-    const copyCodeToClipboard = () => {
-        const el = this.textArea
-        el.select()
-        document.execCommand("copy")
-    }
 
     useEffect(()=>{if(prevRoom===room.room){
             setit('roomClick')
@@ -70,7 +65,7 @@ const Room=(room)=>{
                             textField.select()
                             document.execCommand('copy')
                             textField.remove()
-                        }} value="Example copy for the textarea.">
+                        }}>
                             <FontAwesomeIcon icon={faShare} />
                             <p>share</p>
                         </div>

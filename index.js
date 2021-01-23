@@ -22,40 +22,11 @@ const PORT= process.env.PORT || 5000;
 //mongodb+srv://admin:Pza8G2mWK8XCfQy7@cluster0.nvj33.mongodb.net/allDb?retryWrites=true&w=majority
 const connection= 'mongodb://admin:Pza8G2mWK8XCfQy7@cluster0-shard-00-00.nvj33.mongodb.net:27017,cluster0-shard-00-01.nvj33.mongodb.net:27017,cluster0-shard-00-02.nvj33.mongodb.net:27017/allDb?ssl=true&replicaSet=atlas-vngvpu-shard-0&authSource=admin&retryWrites=true&w=majority'
 
-//*Pusher
-const pusher = new Pusher({
-    appId: "1123475",
-    key: "daaf1aa16c0739d32aca",
-    secret: "b3f729ebc086afee0b62",
-    cluster: "ap2",
-    useTLS: true
-});
 
 const db= mongoose.connection;
 
 db.once('open',()=>{
     console.log('db is connected');
-    const msgcollection= db.collection('contents');
-    const changeS= msgcollection.watch();
-
-    changeS.on("change", (change)=>{
-        console.log('change has occured');
-
-        if(change.operationType==='insert'){
-            console.log('ok');
-            const msgDetail=change.fullDocument;
-            pusher.trigger('messages','inserted',{
-                name: msgDetail.name,
-                msg: msgDetail.msg,
-                time:msgDetail.time
-
-            });
-        }
-        else{
-            console.log('error');
-        }
-    });
-
 });
 //* middleware
 app.use(express.json());
@@ -156,7 +127,7 @@ io.on('connection', (socket) => {
         }
     });
     socket.on('disconnect',()=>{
-        console.log('lala');
+        console.log('disconnected');
     })
     socket.on('send',(messageData)=>{
         console.log(messageData);
@@ -165,7 +136,7 @@ io.on('connection', (socket) => {
                 console.log(err)
             }
             else{
-                console.log(data);
+                res.send();
             }
     
         })

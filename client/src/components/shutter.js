@@ -4,7 +4,6 @@ import {useSelector, useDispatch} from 'react-redux';
 import { faAngleDown , faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cdate from './date.js';
-import axios from './axios';
 import Room from './room.js';
 
 
@@ -13,7 +12,6 @@ import Room from './room.js';
 import JoinRoom from './room-config/joinRoom';
 import AddRoom from './room-config/addRoom';
 import hit from './reducer/action/hit';
-import ChangePrevRoom from './reducer/action/changePrevRoom';
 import changeNaviStyle from './reducer/action/changeNaviStyle';
 
 
