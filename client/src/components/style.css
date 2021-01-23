@@ -279,8 +279,8 @@
     width:98%;
     padding:5px;
     transition:0.2s ease;
-    display: inline-flex;
     height:40px;
+    overflow: hidden;
 }
 .roomTab{
     position:relative;
@@ -291,11 +291,18 @@
     left:3%;
     width:95%;
 }
-
+.wow{
+    display: flex;
+    width:100%;
+    height: 30px;
+    justify-content: space-between;
+}
 .roomName:hover{
     border-bottom: 2px solid white ;
     animation:wow 0.3s ease-out forwards;
     box-sizing: border-box;
+    border-radius: 2px;
+    
 }
 .roomClick{
     color:white;
@@ -306,18 +313,62 @@
     transition:0.2s ease;
     border-bottom: 2px solid white ;
     animation:wow 0.3s ease-out forwards;
-    display: flex;
     height:40px;
-    justify-content: space-between;
+    border-radius: 2px;
+    overflow: hidden;
 }
-.roomClick p, .roomName p{
+.roomClick p, .roomName p, .tall p{
     position: relative;
     bottom:13px;
 }
+.settings{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+
+}
+.settings:nth-child(2){
+    margin-left: 3px;
+    margin-right: 5px;
+}
+.red{
+    color: rgba(255, 0, 0, 0.808);
+}
+.tall{
+    color:white;
+    border-bottom:1px solid rgba(255, 255, 255, 0.349);
+    box-sizing: border-box;
+    width:98%;
+    padding:5px;
+    transition:0.2s ease;
+    border-bottom: 2px solid white ;
+    animation:wow 0.3s ease-out forwards;
+    height:80px;
+    border-radius: 2px;
+}
+.users{
+    display: flex;
+    padding-top: 8px;
+    padding-left: 8px;
+    height:25px;
+    width: 80px;
+    transition: 0.2s ease;
+
+}
+.users:hover{
+    background-color: rgba(0, 0, 0, 0.158);
+    border-radius: 30px;
+    animation:radial 1s ease forwards;
+    
+}
+.users p{
+    margin-top: 8px;
+    margin-left: 2px;
+}
+
 
 .arrow2{
     transition: 0.2s ease;
-    border-radius: 50%;
     padding-left:6px;
     padding-right: 6px;
     position: relative;
@@ -325,12 +376,23 @@
 }
 .arrow2:hover{
     background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
+    animation:radial 1s ease forwards;
     padding-left:6px;
     padding-right: 6px;
     position: relative;
     bottom:2px;
+    
 
+}
+@keyframes radial{
+    0%{
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.205);
+    }
+    100%{
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 100px;
+    }
 }
 
 
