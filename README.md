@@ -1,6 +1,6 @@
 # Lets talk
 
-I had combined react app to api bye ``app.use('/', express.static('client/build'))``
+I had combined react app to api bye ```jvascript app.use('/', express.static('client/build'))```
 and some start script you will find in package.json. <br>
 To run it for developing you had to change some code.<br>
 ## This is the ui of my chat app <br>
