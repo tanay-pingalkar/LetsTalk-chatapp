@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import '../style.css';
 import {useSelector} from 'react-redux';
 
 
@@ -8,9 +8,9 @@ const Message=({user,text,checkName})=>{
     return(
         <div >
             {(user!==userName)?(
-                <p class={'let'}><div>from {user}</div>{text}</p>
+                <span class={'let'}><div>from {user}</div>{text}</span>
             ):(
-                <div class='left-2'><p class={'none'}>ok</p><p class={'left-1'}>{text}</p></div>
+                <div class='left-2'><span class={'none'}>ok</span><span class={'left-1'}>{text}</span></div>
             )}
         </div>
     );

@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import axios from './axios';
-import "./style.css";
+import axios from '../axios';
+import "../style.css";
 import {useSelector , useDispatch} from 'react-redux';
-import login from './reducer/action/login'
+import login from '../reducer/action/login'
 
 
 function Login() {

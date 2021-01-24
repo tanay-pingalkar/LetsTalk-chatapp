@@ -4,7 +4,7 @@ import "./style.css"
 import queryString from 'query-string';
 import {useSelector , useDispatch} from 'react-redux';
 import loadUserData from './reducer/action/loadUserData';
-import RoomChat from './roomChat';
+import RoomChat from './chatroom/roomChat';
 import Shutter from './shutter'
 import ChangePrevRoom from './reducer/action/changePrevRoom'
 

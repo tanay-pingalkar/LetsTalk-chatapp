@@ -136,7 +136,7 @@ io.on('connection', (socket) => {
                 console.log(err)
             }
             else{
-                res.send();
+                console.log('meg created')
             }
     
         })

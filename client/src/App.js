@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import Login from './components/login'
-import Signin from './components/signin'
+import Login from './components/auth/login'
+import Signin from './components/auth/signin'
 import Chat from './components/chat'
 
 

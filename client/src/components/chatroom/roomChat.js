@@ -1,6 +1,6 @@
 import React , {useState,useEffect}from 'react';
-import axios from './axios'
-import "./style.css"
+import axios from '../axios'
+import "../style.css"
 import io from 'socket.io-client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
