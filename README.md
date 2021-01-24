@@ -1,6 +1,6 @@
 # Lets talk
 
-I had combined react app to api bye 
+I had combined react app to api by
 ```javascript 
 app.use('/', express.static('client/build'))
 ```
