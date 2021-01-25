@@ -5,6 +5,10 @@ import {useSelector, useDispatch} from 'react-redux';
 import ChangePrevRoom from './reducer/action/changePrevRoom';
 import { faAngleDown , faUsers, faShare, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import hit from "./reducer/action/hit";
+
+
+
 
 
 const Room=(room)=>{
@@ -17,10 +21,17 @@ const Room=(room)=>{
 
     //*dispatch and update in database
     const setPrev=(room)=>{
-        axios.post(`/prevRoom/${userData._id}`,{
-            prevRoom:room
-        });
-        dispatch(ChangePrevRoom(room));
+        if(roomName==='tall'){
+            console.log('ok')
+        }
+        else{
+            axios.post(`/prevRoom/${userData._id}`,{
+                prevRoom:room
+            });
+            dispatch(ChangePrevRoom(room));
+            console.log("wow")
+        }
+
     }
 
     useEffect(()=>{if(prevRoom===room.room){
@@ -53,7 +64,7 @@ const Room=(room)=>{
                         )}
                     </div>
                     <div className='settings'>
-                        <div class='users'>
+                        <div class='users' onClick={()=>{dispatch(hit('people'))}}>
                             <FontAwesomeIcon icon={faUsers} />
                             <p>people</p>
                         </div>
@@ -65,11 +76,11 @@ const Room=(room)=>{
                             textField.select()
                             document.execCommand('copy')
                             textField.remove()
-                        }}>
+                        }} onClick={()=>{dispatch(hit('share'))}}>
                             <FontAwesomeIcon icon={faShare} />
                             <p>share</p>
                         </div>
-                        <div class='users'>
+                        <div class='users' onClick={()=>{dispatch(hit('leave'))}}>
                             <FontAwesomeIcon icon={faSignOutAlt}   className='red'/>
                             <p className='red'>leave</p>
                         </div>

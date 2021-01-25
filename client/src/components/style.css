@@ -469,7 +469,7 @@
     left: 50%;
     transform: translate(-50%, -50%);  
     transition: 0.2s ease;
-    animation: trans 0.5s ease-in-out ;
+    animation: trans 0.2s ease-in-out ;
     
 }
 

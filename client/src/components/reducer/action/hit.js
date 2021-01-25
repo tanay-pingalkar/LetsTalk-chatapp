@@ -9,6 +9,21 @@ const hit=(which)=>{
             type:'addRoom'
         }
     }
+    else if(which==='people'){
+        return{
+            type:'people'
+        }
+    }
+    else if(which==='leave'){
+        return{
+            type:'leave'
+        }
+    }
+    else if(which==='share'){
+        return{
+            type:'share'
+        }
+    }
 }
 
 

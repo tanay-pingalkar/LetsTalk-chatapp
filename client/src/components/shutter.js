@@ -4,7 +4,10 @@ import {useSelector, useDispatch} from 'react-redux';
 import { faAngleDown , faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Cdate from './date.js';
+import Leave from "./settings/leave";
 import Room from './room.js';
+import Share from './settings/share';
+import People from './settings/people';
 
 
 
@@ -74,6 +77,9 @@ const Shutter=(props)=>{
             {(bulltwo)?(
                 <JoinRoom id={props.id}/>
             ):(<span></span>)}
+            <Leave></Leave>
+            <Share></Share>
+            <People></People>
         </div>
     )
 }
