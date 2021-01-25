@@ -1,7 +1,7 @@
 //* importing
 const express= require('express');
 const mongoose= require("mongoose");
-const Messages= require("./msg.js");
+const Messages= require("./db/msg");
 const Pusher=   require("pusher");
 const cors= require("cors");
 const User= require("./db/user.js");
