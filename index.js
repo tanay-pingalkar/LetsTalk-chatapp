@@ -2,7 +2,6 @@
 const express= require('express');
 const mongoose= require("mongoose");
 const Messages= require("./db/msg");
-const Pusher=   require("pusher");
 const cors= require("cors");
 const User= require("./db/user.js");
 
@@ -89,15 +88,7 @@ app.post('/prevRoom/:id',(req,res)=>{
             res.send(data)
         }
     } );
-})
-
-
-
-
-
-
-
-//* listening
+});
 
 
 
@@ -144,6 +135,7 @@ io.on('connection', (socket) => {
     })
     
 });
+
 
 
 
